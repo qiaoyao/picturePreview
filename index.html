@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图片本地预览</title>
+</head>
+<body>
+<div class="file">
+    <input type="file" name="" id="upload" multiple/>
+</div>
+<div class="view">
+    <p>预览：</p>
+    <img src="" id="view" style="width: 500px;" />
+</div>
+
+<script type="text/javascript">
+    var upload = document.getElementById("upload");
+    upload.onchange = function(){
+        var fileReader = new FileReader();
+        // console.log(this.files.length);
+        for(var i=0; i<this.files.length; i++){
+            fileReader.readAsDataURL(this.files[i]);
+            fileReader.onload = function () {
+                // console.log(this.result);
+                document.getElementById("view").src = this.result;
+            };
+        }
+    };
+</script>
+</body>
+</html>
