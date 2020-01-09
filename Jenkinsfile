@@ -6,9 +6,14 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
+        stage('build') { 
             steps {
-                sh 'node --version' 
+                sh 'npm install' 
+            }
+        }
+         stage('deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
